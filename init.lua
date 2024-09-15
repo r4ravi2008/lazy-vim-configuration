@@ -76,18 +76,34 @@ if vim.g.neovide then
   vim.keymap.set("n", "<D-v>", '"+P') -- Paste normal mode
   vim.keymap.set("v", "<D-v>", '"+P') -- Paste visual mode
   vim.keymap.set("c", "<D-v>", "<C-R>+") -- Paste command mode
-  vim.keymap.set("i", "<D-v>", "<C-R>+") -- Paste insert mode
+  vim.keymap.set("i", "<D-v>", "<C-R>+") -- Paste insert modula2_default_extension
+  vim.api.nvim_set_keymap(
+    "n",
+    "<C-+>",
+    ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>",
+    { silent = true }
+  )
+  vim.api.nvim_set_keymap(
+    "n",
+    "<C-->",
+    ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>",
+    { silent = true }
+  )
+  vim.api.nvim_set_keymap("n", "<C-0>", ":lua vim.g.neovide_scale_factor = 1<CR>", { silent = true })
 end
 
 -- grep in current buffer directory
-function _G.grep_in_current_dir(pattern)
+function _G.grep_in_current_dir()
   local current_dir = vim.fn.expand("%:p:h")
   builtin.live_grep({
     prompt_title = "< Search >",
     cwd = current_dir,
-    search = pattern,
   })
 end
 
-vim.cmd([[command! -nargs=1 GrepCurrent lua _G.grep_in_current_dir(<f-args>)]])
-vim.api.nvim_set_keymap("n", "<leader>sf", [[:GrepCurrent ]], { noremap = true, silent = true })
+vim.cmd([[command! GrepCurrent lua _G.grep_in_current_dir()]])
+vim.api.nvim_set_keymap("n", "<leader>sf", [[:GrepCurrent<CR> ]], { noremap = true, silent = true })
+
+-- magick lua path
+package.path = package.path .. ";" .. "/Users/rkommineni/.luarocks/share/lua/5.1/?/init.lua"
+package.path = package.path .. ";" .. "/Users/rkommineni/.luarocks/share/lua/5.1/?.lua"

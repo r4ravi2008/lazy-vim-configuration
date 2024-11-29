@@ -101,9 +101,3 @@ function _G.grep_in_current_dir()
   })
 end
 
-vim.cmd([[command! GrepCurrent lua _G.grep_in_current_dir()]])
-vim.api.nvim_set_keymap("n", "<leader>sf", [[:GrepCurrent<CR> ]], { noremap = true, silent = true })
-
--- magick lua path
-package.path = package.path .. ";" .. "/Users/rkommineni/.luarocks/share/lua/5.1/?/init.lua"
-package.path = package.path .. ";" .. "/Users/rkommineni/.luarocks/share/lua/5.1/?.lua"

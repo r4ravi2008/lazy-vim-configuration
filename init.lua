@@ -2,7 +2,7 @@
 require("config.lazy")
 
 require("CopilotChat").setup({
-  model = "gpt-4",
+  model = "gpt-4o",
 })
 
 vim.api.nvim_set_keymap("n", "<leader>as", [[:CopilotChatSaveWithInput<CR>]], { noremap = true, silent = true })
@@ -41,7 +41,6 @@ end
 vim.cmd([[command! CopilotChatLoadFromDropdown lua _G.load_session()]])
 vim.api.nvim_set_keymap("n", "<leader>al", [[:CopilotChatLoadFromDropdown<CR>]], { noremap = true, silent = true })
 
-local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 
 function _G.search_org_dir(keyword)
@@ -91,13 +90,3 @@ if vim.g.neovide then
   )
   vim.api.nvim_set_keymap("n", "<C-0>", ":lua vim.g.neovide_scale_factor = 1<CR>", { silent = true })
 end
-
--- grep in current buffer directory
-function _G.grep_in_current_dir()
-  local current_dir = vim.fn.expand("%:p:h")
-  builtin.live_grep({
-    prompt_title = "< Search >",
-    cwd = current_dir,
-  })
-end
-

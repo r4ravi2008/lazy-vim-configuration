@@ -1,10 +1,6 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 
-require("CopilotChat").setup({
-  model = "gpt-4o",
-})
-
 vim.api.nvim_set_keymap("n", "<leader>as", [[:CopilotChatSaveWithInput<CR>]], { noremap = true, silent = true })
 
 -- Function to save session with user input
@@ -41,7 +37,7 @@ end
 vim.cmd([[command! CopilotChatLoadFromDropdown lua _G.load_session()]])
 vim.api.nvim_set_keymap("n", "<leader>al", [[:CopilotChatLoadFromDropdown<CR>]], { noremap = true, silent = true })
 
-local builtin = require("telescope.builtin")
+-- local builtin = require("telescope.builtin")
 
 function _G.search_org_dir(keyword)
   builtin.live_grep({

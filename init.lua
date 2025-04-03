@@ -86,3 +86,8 @@ if vim.g.neovide then
   )
   vim.api.nvim_set_keymap("n", "<C-0>", ":lua vim.g.neovide_scale_factor = 1<CR>", { silent = true })
 end
+
+-- print to console if vsocde is running
+if vim.g.vscode then
+  print("Running in vscode")
+end

@@ -2,6 +2,7 @@ return {
   "stevearc/oil.nvim",
   ---@module 'oil'
   ---@type oil.SetupOpts
+  vscode = true,
   opts = {
     view_options = {
       show_hidden = true,

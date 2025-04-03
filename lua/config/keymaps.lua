@@ -13,3 +13,7 @@ map("n", "<leader>gic", "<cmd>Octo issue create<CR>", opts)
 map("n", "<leader>gpc", "<cmd>Octo pr create<CR>", opts)
 map("n", "<leader>gpl", "<cmd>Octo pr list<CR>", opts)
 map("n", "<leader>gps", "<cmd>Octo pr search<CR>", opts)
+
+map("n", "<Leader>gr", ":OpenInGHRepo <CR>", { silent = true, noremap = true })
+map("n", "<Leader>gf", ":OpenInGHFile <CR>", { silent = true, noremap = true })
+map("v", "<Leader>gf", ":OpenInGHFileLines <CR>", { silent = true, noremap = true })

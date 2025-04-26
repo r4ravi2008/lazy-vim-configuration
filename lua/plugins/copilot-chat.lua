@@ -9,7 +9,7 @@ return {
     build = "make tiktoken", -- Only on MacOS or Linux
     opts = {
       debug = false, -- Enable debugging
-      -- See Configuration section for rest
+      model = "gpt-4o",
     },
     -- See Commands section for default commands if you want to lazy load on them
   },

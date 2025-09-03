@@ -194,5 +194,4 @@ return {
     "stevearc/oil.nvim",
     vscode = true,
   },
-  { "augmentcode/augment.vim" },
 }

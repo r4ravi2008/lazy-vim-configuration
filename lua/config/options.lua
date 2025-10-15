@@ -4,3 +4,4 @@
 
 vim.o.number = true
 vim.o.relativenumber = false
+vim.filetype.add({ extension = { clc = "cpp" } })

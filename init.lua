@@ -1,41 +1,7 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 
-vim.api.nvim_set_keymap("n", "<leader>as", [[:CopilotChatSaveWithInput<CR>]], { noremap = true, silent = true })
 
--- Function to save session with user input
-function _G.save_session()
-  vim.ui.input({ prompt = "Enter session name: " }, function(input)
-    if input then
-      vim.cmd("CopilotChatSave " .. input)
-    end
-  end)
-end
-
-vim.cmd([[command! CopilotChatSaveWithInput lua _G.save_session()]])
-vim.api.nvim_set_keymap("n", "<leader>as", [[:CopilotChatSaveWithInput<CR>]], { noremap = true, silent = true })
-
-function _G.load_session()
-  local path = "/Users/rkommineni/.local/share/nvim/copilotchat_history/"
-  local files = vim.fn.glob(path .. "*.json", false, true)
-  local sessions = {}
-
-  for _, file in ipairs(files) do
-    local session_name = vim.fn.fnamemodify(file, ":t:r")
-    table.insert(sessions, session_name)
-  end
-
-  vim.ui.select(sessions, {
-    prompt = "Select a session to load:",
-  }, function(choice)
-    if choice then
-      vim.cmd("CopilotChatLoad " .. choice)
-    end
-  end)
-end
-
-vim.cmd([[command! CopilotChatLoadFromDropdown lua _G.load_session()]])
-vim.api.nvim_set_keymap("n", "<leader>al", [[:CopilotChatLoadFromDropdown<CR>]], { noremap = true, silent = true })
 
 -- local builtin = require("telescope.builtin")
 

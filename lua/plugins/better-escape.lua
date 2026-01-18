@@ -3,15 +3,13 @@ return {
   event = { "InsertEnter", "TermOpen" },
   config = function()
     require("better_escape").setup({
-      timeout = 150,
+      timeout = 100,
       mappings = {
         i = {
-          j = { k = "<Esc>" },
-          k = { j = "<Esc>" },
+          k = { l = "<Esc>" },
         },
         t = {
-          j = { k = "<C-\\><C-n>" },
-          k = { j = "<C-\\><C-n>" },
+          k = { l = "<C-\\><C-n>" },
         },
       },
     })

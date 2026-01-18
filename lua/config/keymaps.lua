@@ -5,8 +5,6 @@
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
--- Window navigation keymaps
-map("i", "jk", "<ESC>", opts)
 map("n", "<leader>as", "<cmd>CopilotChatSaveWithInput<CR>", opts)
 map("n", "<leader>gil", "<cmd>Octo issue list<CR>", opts)
 map("n", "<leader>gic", "<cmd>Octo issue create<CR>", opts)
